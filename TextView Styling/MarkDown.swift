@@ -13,7 +13,7 @@
 import SwiftUI
 
 struct MarkDown: View {
-    let sample = "With markdown you can set text to bold, italics, strikethrough or monospaced text simply by marking it up.  You can even add links to your text like this for a web site www.createchsol.com."
+    let sample: LocalizedStringKey = "With markdown you can set text to **bold**, *italics*, ~strikethrough~ or `monospaced text` simply by marking it up.  You can even add links to your text like this for a web site [Createch Solutions](https://www.createchsol.com)"
 
     var body: some View {
         NavigationStack {
@@ -22,30 +22,31 @@ struct MarkDown: View {
                     Text("Markdown is a lightweight markup language used for formatting plain text, often utilized in online content and documentation for its simplicity and readability.")
                         .font(.caption)
                     LabeledContent("Bold") {
-                        Text("This is bold and this is bold too.")
+                        Text("This is **bold** and this is __bold__ too.")
                     }
                     LabeledContent("Italics") {
-                        Text("This is italics and this is italics too.")
+                        Text("This is *italics* and this is _italics_ too.")
                     }
                     LabeledContent("Strikethrough") {
-                        Text("This is strikethrough and this is strikethrough too.")
+                        Text("This is ~strikethrough~ and this is ~~strikethrough~~ too.")
                     }
                     LabeledContent("Monospaced") {
-                        Text("The following is monospaced text")
+                        Text("The following is `monospaced text`")
                     }
                 }
                 Section("Links") {
                     LabeledContent("Web Link") {
-                        Text("Visit Apple: https://apple.com")
+                        Text("Visit [Apple](https://apple.com)")
                     }
                     LabeledContent("Mail To") {
-                        Text("Email Stewart Lynch slynch@createchsol.com")
+                        Text("Email [Stewart Lynch](slynch@createchsol.com)")
                     }
                 }
                 Section("String Interpolation") {
+//                    Text(.init(sample))
                     Text(sample)
                     LabeledContent("Vebatim") {
-                        Text("This is bold, italics, strikethrough and monospaced.")
+                        Text(verbatim: "This is **bold**, *italics*, ~strikethrough~ and `monospaced`.")
                     }
                 }
             }

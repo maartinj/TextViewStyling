@@ -15,25 +15,29 @@ import SwiftUI
 struct StringInterpolation: View {
     var body: some View {
         NavigationStack {
+            let palette = Image(systemName: "paintpalette.fill").symbolRenderingMode(.multicolor)
+            let introString = Text("Paint with").foregroundColor(.red)
+            let largePalette = Text(palette).font(.largeTitle)
             Form {
                 Section("Multiple text views") {
-                    Text("Summer is a great time to visit Vancouver. Make sure you check out Grouse mountain")
+                    Text("\(Text("**Summer**").foregroundColor(.orange)) is a great time to visit **Vancouver**. Make sure you check out \(Text("[Grouse mountain](https://grousemountain.com)").underline())")
+                        .tint(.green)
                 }
                 Section("SF Symbols") {
                     LabeledContent("One Way") {
                         HStack {
                             Text("Paint with")
-                            Image(systemName: "paintpalette.fill")
+                            Image(systemName: "paintpalette.fill").symbolRenderingMode(.multicolor)
                         }
                     }
                     LabeledContent("String Interpolation"){
-                        
+                        Text("Paint with \(Image(systemName: "paintpalette.fill").symbolRenderingMode(.multicolor))")
                     }
                     LabeledContent("String Interpolation with style"){
-                       
+                        Text("Paint with \(Text(palette).font(.largeTitle))")
                     }
                     LabeledContent("Even better") {
-
+                        Text("\(introString) \(largePalette)")
                     }
                 }
             }
